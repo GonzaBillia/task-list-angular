@@ -9,27 +9,26 @@ import { TareasService } from './services/tareas.service';
   standalone: true,
   imports: [RouterOutlet, FormsModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  
-  listaTareas: string[] = []
-  nuevaTarea: string = ''
+  listaTareas: string[] = [];
+  nuevaTarea: string = '';
 
-  private _tareasService = inject(TareasService)
+  private _tareasService = inject(TareasService);
 
   ngOnInit(): void {
-    this.listaTareas = this._tareasService.getTareas()
+    this.listaTareas = this._tareasService.getTareas();
   }
 
   agregarTarea() {
-    this._tareasService.agregarTarea(this.nuevaTarea)
-    this.nuevaTarea = ''
-    this.listaTareas = this._tareasService.getTareas()
+    this._tareasService.agregarTarea(this.nuevaTarea);
+    this.nuevaTarea = '';
+    this.listaTareas = this._tareasService.getTareas();
   }
 
   eliminarTarea(index: number) {
-    this._tareasService.eliminarTarea(index)
-    this.listaTareas = this._tareasService.getTareas()
+    this._tareasService.eliminarTarea(index);
+    this.listaTareas = this._tareasService.getTareas();
   }
 }
